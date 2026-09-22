@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="家庭自制蛋糕电饭煲 - 专业电饭煲蛋糕制作教程与食谱大全。无需烤箱，零失败家庭烘焙指南，教你用电饭煲做出蓬松美味的戚风蛋糕、海绵蛋糕和布朗尼。">
+    <meta name="keywords" content="家庭自制蛋糕电饭煲,电饭煲蛋糕食谱,零失败电饭煲蛋糕,电饭煲戚风蛋糕,家庭烘焙">
+    <title>家庭自制蛋糕电饭煲 - 零失败电饭煲蛋糕食谱与制作指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e67e22;
+            --primary-dark: #d35400;
+            --secondary-color: #2c3e50;
+            --bg-color: #fdfbf7;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 12px;
+            --spacing-unit: 1rem;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* Why Section */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .why-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .why-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .why-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        /* Recipe Grid */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .recipe-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recipe-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .recipe-img-placeholder {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recipe-img-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .recipe-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recipe-tag {
+            font-size: 0.75rem;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            align-self: flex-start;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .recipe-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .recipe-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .recipe-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 4rem;
+        }
+
+        .guide-steps {
+            counter-reset: step;
+        }
+
+        .guide-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .guide-step::before {
+            counter-increment: step;
+            content: counter(step);
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .guide-step h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        /* Tips */
+        .tips-container {
+            background-color: #fff8e1;
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+        }
+
+        .tips-title {
+            font-weight: 700;
+            color: #f57f17;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        details {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary-color);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details p {
+            margin-top: 1rem;
+            color: var(--text-light);
+            padding-left: 1rem;
+            border-left: 2px solid #eee;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 3rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .guide-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span>🍳</span> 电饭煲烘焙
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#recipes">食谱大全</a></li>
+                    <li><a href="#guide">制作指南</a></li>
+                    <li><a href="#tips">新手必读</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>家庭自制蛋糕电饭煲</h1>
+                <p>无需烤箱，零失败！利用家中现有的电饭煲，轻松制作出松软香甜的戚风蛋糕、海绵蛋糕和布朗尼。简单易学，适合家庭烘焙新手。</p>
+                <a href="#recipes" class="cta-button">开始制作蛋糕</a>
+            </div>
+        </section>
+
+        <!-- Why Use Rice Cooker -->
+        <section class="container">
+            <div class="section-title">
+                <h2>为什么选择电饭煲烘焙？</h2>
+                <p>无需购买昂贵设备，轻松享受烘焙乐趣</p>
+            </div>
+            <div class="why-grid">
+                <article class="why-card">
+                    <span class="why-icon">💰</span>
+                    <h3>成本极低</h3>
+                    <p>不需要购买烤箱，只需一个普通电饭煲，就能完成大部分烘焙需求，大大降低了入门门槛。</p>
+                </article>
+                <article class="why-card">
+                    <span class="why-icon">🔥</span>
+                    <h3>温度稳定</h3>
+                    <p>电饭煲的恒温功能配合蒸汽，能确保蛋糕受热均匀，成品不易出现塌陷或焦糊现象。</p>
+                </article>
+                <article class="why-card">
+                    <span class="why-icon">🚀</span>
+                    <h3>操作简便</h3>
+                    <p>只需“煮饭”和“保温”两个模式，无需复杂的温控操作，非常适合烘焙新手和懒人。</p>
+                </article>
+                <article class="why-card">
+                    <span class="why-icon">🥘</span>
+                    <h3>一机多用</h3>
+                    <p>除了蛋糕，还能制作布丁、面包、甚至酸奶，一台机器解决多种厨房需求。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Recipe Section -->
+        <section id="recipes" class="container">
+            <div class="section-title">
+                <h2>热门食谱推荐</h2>
+                <p>精选零失败食谱，按口味和难度分类</p>
+            </div>
+            <div class="recipe-grid">
+                <!-- Recipe 1 -->
+                <article class="recipe-card">
+                    <div class="recipe-img-placeholder" style="background-color: #fce4ec;">
+                        <span style="font-size: 4rem; opacity: 0.3;">🍰</span>
+                    </div>
+                    <div class="recipe-content">
+                        <span class="recipe-tag">经典款</span>
+                        <h3 class="recipe-title">原味戚风蛋糕</h3>
+                        <p class="recipe-desc">最经典的电饭煲蛋糕做法，口感松软，组织细腻，成功率高，是新手的第一道烘焙作业。</p>
+                        <div class="recipe-meta">
+                            <span>⏱ 50分钟</span>
+                            <span>🔥 难度：简单</span>
+                        </div>
+                        <a href="#" class="recipe-link">查看详细食谱 →</a>
+                    </div>
+                </article>
+
+                <!-- Recipe 2 -->
+                <article class="recipe-card">
+                    <div class="recipe-img-placeholder" style="background-color: #fff3e0;">
+                        <span style="font-size: 4rem; opacity: 0.3;">🍫</span>
+                    </div>
+                    <div class="recipe-content">
+                        <span class="recipe-tag">浓郁口感</span>
+                        <h3 class="recipe-title">电饭煲布朗尼</h3>
+                        <p class="recipe-desc">无需打发鸡蛋，加入巧克力碎，口感像布朗尼一样浓郁湿润，充满巧克力香气。</p>
+                        <div class="recipe-meta">
+                            <span>⏱ 45分钟</span>
+                            <span>🔥 难度：简单</span>
+                        </div>
+                        <a href="#" class="recipe-link">查看详细食谱 →</a>
+                    </div>
+                </article>
+
+                <!-- Recipe 3 -->
+                <article class="recipe-card">
+                    <div class="recipe-img-placeholder" style="background-color: #e8f5e9;">
+                        <span style="font-size: 4rem; opacity: 0.3;">🍋</span>
+                    </div>
+                    <div class="recipe-content">
+                        <span class="recipe-tag">清新口味</span>
+                        <h3 class="recipe-title">柠檬戚风蛋糕</h3>
+                        <p class="recipe-desc">加入新鲜柠檬皮屑和柠檬汁，酸甜清爽，口感轻盈，非常适合夏天食用。</p>
+                        <div class="recipe-meta">
+                            <span>⏱ 55分钟</span>
+                            <span>🔥 难度：中等</span>
+                        </div>
+                        <a href="#" class="recipe-link">查看详细食谱 →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="guide" class="container">
+            <div class="section-title">
+                <h2>新手制作全攻略</h2>
+                <p>掌握这四个步骤，轻松搞定电饭煲蛋糕</p>
+            </div>
+            <div class="guide-section">
+                <div class="guide-steps">
+                    <div class="guide-step">
+                        <div>
+                            <h3>1. 准备工具与食材</h3>
+                            <p>准备好电饭煲、打蛋盆、电动打蛋器（或手动打蛋器）、量杯和量勺。食材方面，鸡蛋建议使用室温的，面粉过筛，黄油提前融化。</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div>
+                            <h3>2. 分离蛋清蛋黄</h3>
+                            <p>将鸡蛋蛋清蛋黄分离，保证打蛋盆和蛋壳无油无水。蛋黄中加入牛奶、油和面粉，搅拌至无颗粒的面糊。蛋清分三次加入白糖打发至硬性发泡（提起打蛋器有直立尖角）。</p>
+                            <div class="tips-container">
+                                <div class="tips-title">💡 关键提示</div>
+                                <p>蛋清必须打发到位，这是蛋糕蓬松的关键。如果打蛋器不好用，手动打发会更累，建议使用电动工具。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div>
+                            <h3>3. 混合面糊</h3>
+                            <p>将三分之一蛋白霜加入蛋黄糊中，用“切拌”手法混合均匀，再将混合好的面糊倒回剩余的蛋白霜中，继续切拌均匀，直到颜色一致。</p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div>
+                            <h3>4. 烘烤与出炉</h3>
+                            <p>在电饭煲内胆底部和四周刷一层薄薄的油（防粘），倒入面糊，轻轻震几下震出气泡。按下“煮饭键”，跳闸后焖10分钟，再按一次“煮饭键”，再次跳闸后焖20分钟即可。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="container">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+                <p>关于家庭自制蛋糕电饭煲的疑问解答</p>
+            </div>
+            <div class="faq-grid">
+                <details>
+                    <summary>电饭煲蛋糕为什么会塌陷？</summary>
+                    <p>主要原因可能是蛋白打发不足、混合时消泡过多，或者烘烤时间不够。建议严格按照食谱中的打发程度操作，面糊倒入后不要剧烈震动。</p>
+                </details>
+                <details>
+                    <summary>一定要用植物油吗？可以用黄油吗？</summary>
+                    <p>可以使用黄油，但黄油融化后会带有奶香味，颜色会稍微深一些。植物油（如玉米油、色拉油）口感更清爽，不会抢味。如果使用黄油，请确保融化后冷却至微温再加入。</p>
+                </details>
+                <details>
+                    <summary>没有电动打蛋器怎么做蛋糕？</summary>
+                    <p>可以使用手动打蛋器。虽然比较费力，但只要耐心地顺着一个方向快速搅拌蛋清，也能达到打发效果。只是成功率会比电动打蛋器略低一些。</p>
+                </details>
+                <details>
+                    <summary>电饭煲需要铺油纸或刷油吗？</summary>
+                    <p>建议刷油。为了防止蛋糕粘锅，可以在内胆底部和四周均匀刷上一层薄油。如果担心粘，也可以铺一层油纸，但要注意油纸不能接触加热盘。</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <p>专注于家庭电饭煲烘焙技巧分享，致力于让每个人都能轻松在家做出美味的蛋糕。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#recipes">食谱大全</a></li>
+                    <li><a href="#guide">制作指南</a></li>
+                    <li><a href="#tips">新手教程</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li><a href="#">意见反馈</a></li>
+                    <li><a href="#">商务合作</a></li>
+                    <li><a href="#">加入社区</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 家庭自制蛋糕电饭煲指南. 保留所有权利.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
