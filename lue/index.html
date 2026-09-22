@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="鲁E车牌号归属地查询、车牌归属地介绍、鲁E车牌所属城市及区域范围信息。">
+    <meta name="keywords" content="鲁E, 鲁E车牌号, 鲁E归属地, 山东车牌, 济南车牌">
+    <title>鲁E车牌号归属地查询与城市介绍</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --primary-dark: #004c99;
+            --accent-color: #ff9900;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --bg-light: #f4f7f9;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+            --container-width: 1200px;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 50px;
+            display: inline-flex;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 50px 0 0 50px;
+        }
+
+        .search-box button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover {
+            background-color: #e68a00;
+        }
+
+        /* Main Content Grid */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Section Styling */
+        .section-card {
+            background: var(--bg-white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title h2 {
+            color: var(--text-main);
+        }
+
+        /* Info List */
+        .info-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            background-color: #e6f0fa;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .info-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--bg-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--bg-light);
+            color: var(--text-secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Map Placeholder */
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder::after {
+            content: "济南市区示意图";
+            font-weight: 500;
+        }
+
+        .map-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background-image: repeating-linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), repeating-linear-gradient(45deg, #ccc 25%, #e9ecef 25%, #e9ecef 75%, #ccc 75%, #ccc);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+        }
+
+        /* City Details Table */
+        .city-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .city-table th, .city-table td {
+            text-align: left;
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .city-table th {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .city-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+
+            .header-inner {
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>鲁E</span> 车牌查询
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">归属地</a></li>
+                    <li><a href="#">城市介绍</a></li>
+                    <li><a href="#">交通规则</a></li>
+                    <li><a href="#">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>鲁E车牌归属地查询</h1>
+            <p>鲁E是山东省济南市的车牌代码。了解鲁E车牌所属的城市、行政区划范围及相关交通信息。</p>
+            <div class="search-box">
+                <input type="text" placeholder="输入车牌号码（如：鲁E12345）进行查询">
+                <button type="button">查询</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container main-content">
+        <div class="grid-layout">
+            <!-- Left Column -->
+            <div class="content-column">
+                
+                <article class="section-card">
+                    <div class="section-title">
+                        <h2>鲁E车牌归属信息</h2>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="icon-box">地</div>
+                            <div class="info-content">
+                                <h3>所属省份：山东省</h3>
+                                <p>鲁E代表该车辆注册地位于山东省济南市。</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon-box">市</div>
+                            <div class="info-content">
+                                <h3>所属城市：济南市</h3>
+                                <p>山东省省会，山东省政治、经济、文化、科教和金融中心。</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon-box">区</div>
+                            <div class="info-content">
+                                <h3>覆盖范围</h3>
+                                <p>通常涵盖济南市历下区、市中区、槐荫区、天桥区、历城区、长清区、章丘区、济阳区、莱芜区、钢城区、平阴县、商河县等行政区域。</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="section-card">
+                    <div class="section-title">
+                        <h2>济南城市概况</h2>
+                    </div>
+                    <p>济南，别称泉城，是山东省省会、副省级市、济南都市圈核心城市，国务院批复确定的环渤海地区南翼的中心城市、山东半岛城市群和济南都市圈核心城市、全国重要的铁路枢纽。</p>
+                    <br>
+                    <p>济南因泉水众多，被称为“泉城”。境内泉水众多，著名的“七十二名泉”大多分布在济南老城区，其中趵突泉、黑虎泉、五龙潭、珍珠泉四大泉群最负盛名。</p>
+                </article>
+
+                <article class="section-card">
+                    <div class="section-title">
+                        <h2>交通与出行</h2>
+                    </div>
+                    <table class="city-table">
+                        <tr>
+                            <th>交通方式</th>
+                            <th>相关说明</th>
+                        </tr>
+                        <tr>
+                            <td>高速公路</td>
+                            <td>京台高速、青兰高速、济广高速、长深高速等多条高速公路贯穿济南，是连接京沪的重要通道。</td>
+                        </tr>
+                        <tr>
+                            <td>公共交通</td>
+                            <td>济南拥有地铁1号线、2号线、3号线等多条线路，以及覆盖广泛的公交车网络。</td>
+                        </tr>
+                        <tr>
+                            <td>机场</td>
+                            <td>济南遥墙国际机场是山东省主要机场之一，连接国内外多个城市。</td>
+                        </tr>
+                    </table>
+                </article>
+
+            </div>
+
+            <!-- Right Column Sidebar -->
+            <aside class="sidebar-column">
+                <div class="sidebar-widget">
+                    <h3>热门查询</h3>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">鲁A (济南)</a>
+                        <a href="#" class="tag">鲁B (青岛)</a>
+                        <a href="#" class="tag">鲁C (淄博)</a>
+                        <a href="#" class="tag">鲁D (枣庄)</a>
+                        <a href="#" class="tag">鲁E (济南)</a>
+                        <a href="#" class="tag">鲁F (东营)</a>
+                        <a href="#" class="tag">鲁G (烟台)</a>
+                        <a href="#" class="tag">鲁H (潍坊)</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>相关资讯</h3>
+                    <ul style="margin-top: 1rem;">
+                        <li style="margin-bottom: 0.8rem;">
+                            <a href="#">济南市最新交通限行政策解读</a>
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <a href="#">2024年济南驾考新规定发布</a>
+                        </li>
+                        <li style="margin-bottom: 0.8rem;">
+                            <a href="#">济南老城区车辆通行证办理指南</a>
+                        </li>
+                        <li>
+                            <a href="#">济南市交警支队便民服务网点</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>济南地图预览</h3>
+                    <div class="map-placeholder">
+                        <div class="map-bg"></div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">
+                        本站致力于为用户提供准确、及时的车牌号归属地查询服务，以及相关城市的基础信息介绍。数据仅供参考，具体信息请以当地交管部门公布为准。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">鲁A车牌查询</a></li>
+                        <li><a href="#">鲁B车牌查询</a></li>
+                        <li><a href="#">鲁C车牌查询</a></li>
+                        <li><a href="#">山东省各地市查询</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>客服电话：400-123-4567</li>
+                        <li>电子邮箱：support@lue-chepai.com</li>
+                        <li>地址：山东省济南市历下区...</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 鲁E车牌查询网 版权所有. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
